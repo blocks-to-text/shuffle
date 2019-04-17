@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>janke spot</title>
+  <meta name="description" content="janke shuffle">
+  <meta name="author" content="colevanderswands">
+
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <link href="./guesses-history/modal.css" rel="stylesheet" />
+  <script src="./guesses-history/scripts.js"></script>
+  <script src="./guesses-history/global-vars.js"></script>
+
+</head>
+
+<body>
+
+  <div id="editor" style="position: relative; width: 800px; height: 400px;"></div>
+
+  <div id="controls"></div>
+
+  <br><br>
+  <div>
+    run it: <button onclick="open_in_pytut();">in python tutor</button> <button onclick="copy_it();">in console</button> <br>
+    edit in: <button onclick="open_in('blockit');">block it</button> <Br>
+    study it with: <button onclick="open_in('parsonizer');">parsonizer</button> 
+    <button onclick="open_in('spot');">spot</button> 
+    <button onclick="open_in('linter');">linter</button> 
+    <button onclick="open_in('flowviz');">flow viz</button> 
+    <br>           
+    <button id="gen-perma" onclick="gen_permalink();">generate permalink:</button>
+    <input id="display-perma"></input><br>
+  </div>
+
+  <br/>
+  <hr>
+  <p> <a href="https://github.com/janke-learning/shuffle" target="_blank">shuffle source code</a>, powered by <a href="https://github.com/ajaxorg/ace" target="_blank">  ace</a>
+  <br>
+  <hr>  
+  <hr>  
+  <a href="http://janke-learning.org" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Janke Learning</a>  
+
+  <!-- begin guess history modal -->
+
+  <div id="guesses-history" style="display:none; overflow-y: hidden;">
+    <div style="padding-right: 5%; padding-left: 5%; padding-bottom: 5%; overflow-y: hidden;">
+      <div>
+        <div id="the-answer" class="prettyprint">
+// no challenge loaded
+        </div>  
+      </div>
+      <div >
+        <div id="the-guesses" style="height: 75vh; width: 100vh; overflow-y: auto">
+          no guesses yet 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" style="overflow-y: hidden;">
+    <div class="modal-inner" style="height: 100%; width: 100%; overflow-y: hidden;">
+      <a data-modal-close>X</a>
+      <div class="modal-content" style="overflow-y: hidden;"></div>
+    </div>
+  </div>
+
+  <script src="./guesses-history/modal.js"></script>
+  <script>var modal = new VanillaModal.default();</script>
+
+  <!-- end guess history modal -->
+
+
+  <script src="./ace/ace.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="./shuffling/solution-space.js"></script>
+  <script src="./shuffling/feedback.js"></script>
+  <script src="./shuffling/generate-challenge.js"></script>
+  <script src="./shuffling/handlers.js"></script>
+  <script src="./shuffling/modes.js"></script>
+
+  <script src="./linking/ctr-c.js"></script>
+  <script src="./linking/open-in-pytut.js"></script>
+  <script src="./linking/permalinking.js"></script>
+
+  <script>
+
+      var editor = ace.edit("editor");
+
+      editor.setTheme('ace/theme/chrome');
+      editor.setFontSize(15);
+      editor.getSession().setMode('ace/mode/javascript');
+      editor.getSession().setTabSize(2);
+      
+
+
+      spot_mode();
+      var mode = "spot";
+
+
+      var snippet;
+      var query = read_snippet_query();
+      if (query) {
+        snippet = query;
+      } else {
+        snippet = "var x = 0;\nif (x) {\n\tconsole.log(x);\n}";
+      };
+
+      var challenge = generate_challenge(embed_snippet(snippet), 50); 
+
+      editor.setValue(snippet);
+      init_modal(snippet);
+  </script>
+
+</body>
+</html>
+
