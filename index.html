@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>janke shuffle</title>
+  <title>shuffle</title>
   <meta name="description" content="janke shuffle">
   <meta name="author" content="colevanderswands">
 
@@ -22,12 +22,9 @@
 
   <br><br>
   <div>
-    run it: <button onclick="open_in_pytut();">in python tutor</button> <button onclick="copy_it();">in console</button> <br>
-    edit in: <button onclick="open_in('blockit');">block it</button> <Br>
+    run it: <button onclick="open_in_pytut();">in python tutor</button> <button onclick="copy_it();">copy snippet</button> <br>
     study it with: <button onclick="open_in('parsonizer');">parsonizer</button> 
     <button onclick="open_in('spot');">spot</button> 
-    <button onclick="open_in('linter');">linter</button> 
-    <button onclick="open_in('flowviz');">flow viz</button> 
     <br>           
     <button id="gen-perma" onclick="gen_permalink();">generate permalink:</button>
     <input id="display-perma"></input><br>
@@ -35,11 +32,11 @@
 
   <br/>
   <hr>
-  <p> <a href="https://github.com/janke-learning/shuffle" target="_blank">shuffle source code</a>, powered by <a href="https://github.com/ajaxorg/ace" target="_blank">  ace</a>
+  <p> <a href="https://github.com/blocks-to-text/shuffle" target="_blank">shuffle source code</a>, powered by <a href="https://github.com/ajaxorg/ace" target="_blank">  ace</a>
   <br>
   <hr>  
-  <hr>  
-  <a href="http://janke-learning.org" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Janke Learning</a>  
+  <hr>    
+  <a href="http://github.com/blocks-to-text/top" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Blocks to Text</a>  
 
   <!-- begin guess history modal -->
 
@@ -90,7 +87,7 @@
 
       editor.setTheme('ace/theme/chrome');
       editor.setFontSize(15);
-      editor.getSession().setMode('ace/mode/javascript');
+      editor.getSession().setMode('ace/mode/python');
       editor.getSession().setTabSize(2);
       
 
@@ -104,7 +101,7 @@
       if (query) {
         snippet = query;
       } else {
-        snippet = "var x = 0;\nif (x) {\n\tconsole.log(x);\n}";
+        snippet = 'def table():\n  return "table"\n\nprint ( table() )';
       };
 
       var challenge = generate_challenge(embed_snippet(snippet), 50); 

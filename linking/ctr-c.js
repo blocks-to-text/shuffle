@@ -1,7 +1,7 @@
 function copy_it() {
   var code = snippet;
   copy_to_clipboard(code); 
-  alert("copied snippet. open the console, paste & hit enter");
+  alert("copied snippet");
 };
 
 // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript

@@ -7,7 +7,7 @@ function read_snippet_query() {
 
 function generate_permalink(snippet, map, viztool) {
   var encoded_snippet = map(snippet);
-  var permalink = "https://janke-learning.github.io/"+viztool+"/?snippet="+encoded_snippet;
+  var permalink = "https://blocks-to-text.github.io/"+viztool+"/?snippet="+encoded_snippet;
   return permalink
 };
 
